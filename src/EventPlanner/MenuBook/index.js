@@ -1,5 +1,5 @@
 class MenuBook {
-  #menuBook = Object.freeze({
+  #menuInformation = Object.freeze({
     appetizer: Object.freeze({
       mushroomSoup: 6_000,
       tapas: 5_500,
@@ -23,7 +23,7 @@ class MenuBook {
   });
 
   #getAllMenuTypes() {
-    return Object.keys(this.#menuBook);
+    return Object.keys(this.#menuInformation);
   }
 
   #getAllMenuNames() {
@@ -32,7 +32,7 @@ class MenuBook {
     const menuNames = menuTypes.reduce(
       (prevMenuNames, menuType) => [
         ...prevMenuNames,
-        ...Object.keys(this.#menuBook[menuType]),
+        ...Object.keys(this.#menuInformation[menuType]),
       ],
       [],
     );
@@ -41,7 +41,7 @@ class MenuBook {
   }
 
   #getBeverageMenuNames() {
-    return Object.keys(this.#menuBook.beverage);
+    return Object.keys(this.#menuInformation.beverage);
   }
 
   /**
@@ -51,7 +51,7 @@ class MenuBook {
   findMenuType(menuName) {
     const menuTypes = this.#getAllMenuTypes();
     return menuTypes.find((menuType) =>
-      Object.keys(this.#menuBook[menuType]).includes(menuName),
+      Object.keys(this.#menuInformation[menuType]).includes(menuName),
     );
   }
 
@@ -61,7 +61,7 @@ class MenuBook {
    */
   findMenuPrice(menuName) {
     const menuType = this.findMenuType(menuName);
-    return this.#menuBook[menuType][menuName];
+    return this.#menuInformation[menuType][menuName];
   }
 
   /**
