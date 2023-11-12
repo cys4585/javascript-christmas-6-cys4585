@@ -1,4 +1,24 @@
-import MenuBook from "./MenuBook.js";
+import MenuBook from "../MenuBook.js";
+
+/**
+ * @typedef {Object} Menu
+ * @property {string} menuName
+ * @property {number} count
+ */
+
+/**
+ * @typedef {Object} OrderedMenu
+ * @property {string} menuName
+ * @property {number} count
+ * @property {string} type
+ * @property {number} price
+ */
+
+/**
+ * @typedef {Object} OrderedStatement
+ * @property {OrderedMenu} orderedMenu
+ * @property {number} totalPrice
+ */
 
 class OrderProcessor {
   #menuBook;
@@ -8,8 +28,8 @@ class OrderProcessor {
   }
 
   /**
-   * @param {{menuName: string, count: number}[]} menus
-   * @returns {{orderedMenus: {menuName: string, count: number, type: string, price: number}[], totalPrice: number}}
+   * @param {Menu[]} menus
+   * @returns {OrderedStatement}
    */
   takeOrder(menus) {
     this.#validateOrderedMenus(menus);
@@ -20,8 +40,8 @@ class OrderProcessor {
   }
 
   /**
-   * @param {{menuName: string, count: number}[]} menus
-   * @returns {{menuName: string, count: number, type: string, price: number}[]}
+   * @param {Menu[]} menus
+   * @returns {OrderedMenu[]}
    */
   #computeOrderedMenusInformation(menus) {
     return menus.map(({ menuName, count }) => ({
@@ -33,7 +53,7 @@ class OrderProcessor {
   }
 
   /**
-   * @param {{menuName: string, count: number, type: string, price: number}[]} orderedMenus
+   * @param {OrderedMenu[]} orderedMenus
    * @returns {number}
    */
   #computeTotalPrice(orderedMenus) {
@@ -44,7 +64,7 @@ class OrderProcessor {
   }
 
   /**
-   * @param {{menuName: string, count: number}[]} menus
+   * @param {Menu[]} menus
    */
   #validateOrderedMenus(menus) {
     this.#validateNonOrderableMenu(menus);

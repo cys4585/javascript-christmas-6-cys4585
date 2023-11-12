@@ -1,13 +1,13 @@
 import OrderProcessor from "../src/ChrismasEvent/EventPlanner/OrderProcess";
 
-describe("오더 리시버 클래스 테스트", () => {
+describe("오더 프로세서(OrderProcessor) 클래스 테스트", () => {
   /**
    * @type {OrderProcessor}
    */
-  let orderReceiver;
+  let orderProcessor;
 
   beforeEach(() => {
-    orderReceiver = new OrderProcessor();
+    orderProcessor = new OrderProcessor();
   });
 
   test("주문 메뉴와 개수를 인자로 computeOrderMenuInformation 메서드를 호출하면, 주문메뉴 정보(메뉴 이름, 개수, 종류, 가격)을 반환한다.", () => {
@@ -31,10 +31,10 @@ describe("오더 리시버 클래스 테스트", () => {
     };
 
     // when
-    const orderedMenuInformations = orderReceiver.takeOrder(orderingMenus);
+    const orderedStatement = orderProcessor.takeOrder(orderingMenus);
 
     // then
-    expect(orderedMenuInformations).toEqual(expectedOrderedMenuInformations);
+    expect(orderedStatement).toEqual(expectedOrderedMenuInformations);
   });
 
   test("메뉴북에 없는 메뉴를 주문하면, 예외가 발생한다.", () => {
@@ -50,7 +50,7 @@ describe("오더 리시버 클래스 테스트", () => {
 
     // when & then
     expect(() => {
-      orderReceiver.takeOrder(orderingMenus);
+      orderProcessor.takeOrder(orderingMenus);
     }).toThrow(expectedMessage);
   });
 
@@ -65,7 +65,7 @@ describe("오더 리시버 클래스 테스트", () => {
 
     // when & then
     expect(() => {
-      orderReceiver.takeOrder(orderingMenus);
+      orderProcessor.takeOrder(orderingMenus);
     }).toThrow(expectedMessage);
   });
 
@@ -84,7 +84,7 @@ describe("오더 리시버 클래스 테스트", () => {
 
     // when & then
     expect(() => {
-      orderReceiver.takeOrder(orderingMenus);
+      orderProcessor.takeOrder(orderingMenus);
     }).toThrow(expectedMessage);
   });
 });

@@ -1,4 +1,4 @@
-import MENU from "../../constants/menu.js";
+import MENU from "../constants/menu.js";
 
 class MenuBook {
   #menuInformation = Object.freeze({
