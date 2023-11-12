@@ -1,9 +1,11 @@
-const englishToKoreanMap = Object.freeze({
+const type = Object.freeze({
   appetizer: "애피타이저",
   main: "메인",
   dessert: "디저트",
   beverage: "음료",
+});
 
+const name = Object.freeze({
   mushroomSoup: "양송이수프",
   tapas: "타파스",
   caesarSalad: "시저샐러드",
@@ -21,13 +23,9 @@ const englishToKoreanMap = Object.freeze({
   champagne: "샴페인",
 });
 
-const koreanToEnglishMap = Object.fromEntries(
-  Object.entries(englishToKoreanMap).map(([key, value]) => [value, key]),
-);
-
-const TRANSLATION = Object.freeze({
-  englishToKoreanMap,
-  koreanToEnglishMap,
+const MENU = Object.freeze({
+  type,
+  name,
 });
 
-export default TRANSLATION;
+export default MENU;

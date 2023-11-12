@@ -9,7 +9,7 @@ class OrderProcessor {
 
   /**
    * @param {{menuName: string, count: number}[]} menus
-   * @returns {array}
+   * @returns {{orderedMenus: {menuName: string, count: number, type: string, price: number}[], totalPrice: number}}
    */
   takeOrder(menus) {
     this.#validateOrderedMenus(menus);
@@ -32,6 +32,10 @@ class OrderProcessor {
     }));
   }
 
+  /**
+   * @param {{menuName: string, count: number, type: string, price: number}[]} orderedMenus
+   * @returns {number}
+   */
   #computeTotalPrice(orderedMenus) {
     return orderedMenus.reduce(
       (prevSum, { price, count }) => prevSum + price * count,

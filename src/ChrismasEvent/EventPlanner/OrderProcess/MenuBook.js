@@ -1,24 +1,26 @@
+import MENU from "../../constants/menu.js";
+
 class MenuBook {
   #menuInformation = Object.freeze({
-    appetizer: Object.freeze({
-      mushroomSoup: 6_000,
-      tapas: 5_500,
-      caesarSalad: 8_000,
+    [MENU.type.appetizer]: Object.freeze({
+      [MENU.name.mushroomSoup]: 6_000,
+      [MENU.name.tapas]: 5_500,
+      [MENU.name.caesarSalad]: 8_000,
     }),
-    main: Object.freeze({
-      tBoneSteak: 55_000,
-      barbecueRib: 54_000,
-      seafoodPasta: 35_000,
-      christmasPasta: 25_000,
+    [MENU.type.main]: Object.freeze({
+      [MENU.name.tBoneSteak]: 55_000,
+      [MENU.name.barbecueRib]: 54_000,
+      [MENU.name.seafoodPasta]: 35_000,
+      [MENU.name.christmasPasta]: 25_000,
     }),
-    dessert: Object.freeze({
-      chocolateCake: 15_000,
-      iceCream: 5_000,
+    [MENU.type.dessert]: Object.freeze({
+      [MENU.name.chocolateCake]: 15_000,
+      [MENU.name.iceCream]: 5_000,
     }),
-    beverage: Object.freeze({
-      zeroCoke: 3_000,
-      redWine: 60_000,
-      champagne: 25_000,
+    [MENU.type.beverage]: Object.freeze({
+      [MENU.name.zeroCoke]: 3_000,
+      [MENU.name.redWine]: 60_000,
+      [MENU.name.champagne]: 25_000,
     }),
   });
 
@@ -41,7 +43,7 @@ class MenuBook {
   }
 
   #getBeverageMenuNames() {
-    return Object.keys(this.#menuInformation.beverage);
+    return Object.keys(this.#menuInformation[MENU.type.beverage]);
   }
 
   /**
