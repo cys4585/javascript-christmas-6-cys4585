@@ -1,4 +1,4 @@
-import OrderProcessor from "../src/EventPlanner/OrderProcessor";
+import OrderProcessor from "../src/ChrismasEvent/EventPlanner/OrderProcess";
 
 describe("오더 리시버 클래스 테스트", () => {
   /**
