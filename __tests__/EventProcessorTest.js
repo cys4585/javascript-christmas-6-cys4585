@@ -7,7 +7,7 @@ const cases = {
     {
       input: {
         dateOfMonth: 26,
-        orderedStatement: {
+        orderState: {
           orderedMenus: [
             { menuName: "타파스", count: 1, type: "애피타이저", price: 5_500 },
             { menuName: "제로콜라", count: 1, type: "음료", price: 3_000 },
@@ -20,7 +20,7 @@ const cases = {
     {
       input: {
         dateOfMonth: 3,
-        orderedStatement: {
+        orderState: {
           orderedMenus: [
             { menuName: "티본스테이크", count: 1, type: "메인", price: 55_000 },
             { menuName: "바비큐립", count: 1, type: "메인", price: 54_000 },
@@ -65,7 +65,7 @@ const cases = {
     {
       input: {
         dateOfMonth: 2,
-        orderedStatement: {
+        orderState: {
           orderedMenus: [
             { menuName: "타파스", count: 1, type: "애피타이저", price: 5_500 },
             { menuName: "티본스테이크", count: 1, type: "메인", price: 55_000 },
@@ -314,13 +314,13 @@ describe("이벤트 프로세서(EventProcessor) 클래스 테스트", () => {
     "방문 날짜와 주문내역 데이터를 가지고 '이벤트 혜택 내역 계산' 메서드를 호출하면, 이벤트 혜택 내역이 담긴 배열(EventBenefitArray)를 반환한다.",
     // given
     ({
-      input: { dateOfMonth, orderedStatement },
+      input: { dateOfMonth, orderState },
       expeced: expectedEventBenefits,
     }) => {
       // when
       const eventBenefits = eventProcessor.computeEventBenefits(
         dateOfMonth,
-        orderedStatement,
+        orderState,
       );
 
       expect(eventBenefits).toEqual(expectedEventBenefits);

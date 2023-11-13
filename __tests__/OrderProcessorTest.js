@@ -31,10 +31,10 @@ describe("오더 프로세서(OrderProcessor) 클래스 테스트", () => {
     };
 
     // when
-    const orderedStatement = orderProcessor.takeOrder(orderingMenus);
+    const orderState = orderProcessor.takeOrder(orderingMenus);
 
     // then
-    expect(orderedStatement).toEqual(expectedOrderedMenuInformations);
+    expect(orderState).toEqual(expectedOrderedMenuInformations);
   });
 
   test("메뉴북에 없는 메뉴를 주문하면, 예외가 발생한다.", () => {

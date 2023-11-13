@@ -15,7 +15,7 @@ import MenuBook from "../MenuBook.js";
  */
 
 /**
- * @typedef {Object} OrderedStatement
+ * @typedef {Object} OrderState
  * @property {OrderedMenu} orderedMenu
  * @property {number} totalPrice
  */
@@ -29,7 +29,7 @@ class OrderProcessor {
 
   /**
    * @param {Menu[]} menus
-   * @returns {OrderedStatement}
+   * @returns {OrderState}
    */
   takeOrder(menus) {
     this.#validateOrderedMenus(menus);

@@ -23,6 +23,12 @@ import EventCalendar from "../EventCalendar.js";
  * @typedef {Array<FreeGiftBenefit | DiscountBenefit>} EventBenefitArray
  */
 
+/**
+ * @typedef {Object} EventState
+ * @property {EventBenefitArray} eventBenefits
+ * @property {number} totalBenefitAmount
+ */
+
 class EventProcessor {
   #eventCalendar;
 
@@ -32,7 +38,7 @@ class EventProcessor {
 
   /**
    * @param {number} dateOfMonth
-   * @param {import("../OrderProcess/index.js").OrderedStatement} orderedStatement
+   * @param {import("../OrderProcess/index.js").OrderState} orderState
    * @returns {EventBenefitArray}
    */
   computeEventBenefits(dateOfMonth, { orderedMenus, totalPrice }) {
@@ -80,25 +86,6 @@ class EventProcessor {
   }
 
   /**
-   * @param {number} totalBenefitAmount
-   * @returns {string}
-   */
-  computeEventBadge(totalBenefitAmount) {
-    const { eventBadge } = CHRISTMAST_EVENT;
-
-    if (totalBenefitAmount > eventBadge.santa.minimumCondition) {
-      return eventBadge.santa.name;
-    }
-    if (totalBenefitAmount > eventBadge.tree.minimumCondition) {
-      return eventBadge.tree.name;
-    }
-    if (totalBenefitAmount > eventBadge.star.minimumCondition) {
-      return eventBadge.star.name;
-    }
-    return eventBadge.default;
-  }
-
-  /**
    * @param {number} totalPrice
    * @returns {FreeGiftBenefit}
    */
@@ -109,7 +96,7 @@ class EventProcessor {
     const freeGiftBenefit = {
       eventType: eventType.freeGift,
       menuName: freeGift.menuName,
-      count: freeGift.count,
+      count: totalPrice < conditionPrice ? 0 : freeGift.count,
       benefitAmount:
         totalPrice < conditionPrice
           ? 0
