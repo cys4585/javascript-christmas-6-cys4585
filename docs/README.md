@@ -113,7 +113,7 @@
 
 #### EventPlanner
 
-- [ ] 할인 후 예상 결제 금액 계산
+- [x] 할인 후 예상 결제 금액 계산
 
 #### OrderProcessor
 
