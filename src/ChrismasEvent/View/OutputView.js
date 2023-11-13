@@ -74,13 +74,14 @@ const OutputView = {
       .map(({ eventType, benefitAmount, discountType, count }) => {
         if (benefitAmount === 0) return "";
         if (eventType === CHRISTMAST_EVENT.eventType.freeGift) {
-          return `증정 이벤트: -${(benefitAmount * count).toLocaleString()}원`;
+          return `증정 이벤트: -${(
+            benefitAmount * count
+          ).toLocaleString()}원\n`;
         }
-        return `${discountType}: -${benefitAmount.toLocaleString()}원`;
+        return `${discountType}: -${benefitAmount.toLocaleString()}원\n`;
       })
-      .join("\n")
-      .trim();
-    Console.print(`${message.length === 0 ? "없음" : message}\n`);
+      .join("");
+    Console.print(`${message.length === 0 ? "없음\n" : message}`);
   },
 
   /**

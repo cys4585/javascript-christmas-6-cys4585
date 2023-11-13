@@ -78,7 +78,7 @@ class OrderProcessor {
     );
 
     if (isExistNonOrderableMenu) {
-      throw new Error("[ERROR] 메뉴북에 없는 메뉴를 주문했네?");
+      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
   }
 
