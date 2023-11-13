@@ -67,6 +67,7 @@ class EventProcessor {
 
   /**
    * @param {EventBenefitArray} eventBenefits
+   * @returns {number}
    */
   computeDiscountAmount(eventBenefits) {
     return eventBenefits.reduce(
@@ -80,21 +81,21 @@ class EventProcessor {
 
   /**
    * @param {number} totalBenefitAmount
-   * @returns
+   * @returns {string}
    */
   computeEventBadge(totalBenefitAmount) {
     const { eventBadge } = CHRISTMAST_EVENT;
 
-    switch (totalBenefitAmount) {
-      case totalBenefitAmount > eventBadge.santa.minimumCondition:
-        return eventBadge.santa.name;
-      case totalBenefitAmount > eventBadge.tree.minimumCondition:
-        return eventBadge.tree.name;
-      case totalBenefitAmount > eventBadge.star.minimumCondition:
-        return eventBadge.star.name;
-      default:
-        return eventBadge.default;
+    if (totalBenefitAmount > eventBadge.santa.minimumCondition) {
+      return eventBadge.santa.name;
     }
+    if (totalBenefitAmount > eventBadge.tree.minimumCondition) {
+      return eventBadge.tree.name;
+    }
+    if (totalBenefitAmount > eventBadge.star.minimumCondition) {
+      return eventBadge.star.name;
+    }
+    return eventBadge.default;
   }
 
   /**
@@ -157,7 +158,7 @@ class EventProcessor {
     const { discountAmount } = CHRISTMAST_EVENT;
 
     const benefitAmount = this.#eventCalendar.isWeekend(dateOfMonth)
-      ? this.#sumDiscountBenefitAmount(
+      ? this.#sumDiscountAmount(
           orderedMenus,
           MENU.type.main,
           discountAmount.weekendEvent,
@@ -176,7 +177,7 @@ class EventProcessor {
     const { discountAmount } = CHRISTMAST_EVENT;
 
     const benefitAmount = this.#eventCalendar.isWeekday(dateOfMonth)
-      ? this.#sumDiscountBenefitAmount(
+      ? this.#sumDiscountAmount(
           orderedMenus,
           MENU.type.dessert,
           discountAmount.weekdayEvent,
@@ -186,6 +187,10 @@ class EventProcessor {
     return this.#generateWeekdayDiscountBenefit(benefitAmount);
   }
 
+  /**
+   * @param {number} benefitAmount
+   * @returns {DiscountBenefit}
+   */
   #generateSpecialDiscountBenefit(benefitAmount) {
     const { discountType } = CHRISTMAST_EVENT;
 
@@ -197,6 +202,10 @@ class EventProcessor {
     return discountBenefit;
   }
 
+  /**
+   * @param {number} benefitAmount
+   * @returns {DiscountBenefit}
+   */
   #generateWeekendDiscountBenefit(benefitAmount) {
     const { discountType } = CHRISTMAST_EVENT;
 
@@ -208,6 +217,10 @@ class EventProcessor {
     return discountBenefit;
   }
 
+  /**
+   * @param {number} benefitAmount
+   * @returns {DiscountBenefit}
+   */
   #generateWeekdayDiscountBenefit(benefitAmount) {
     const { discountType } = CHRISTMAST_EVENT;
 
@@ -221,6 +234,7 @@ class EventProcessor {
 
   /**
    * @param {string} discountType
+   * @param {number} benefitAmount
    * @returns {DiscountBenefit}
    */
   #generateDiscountBenefit(discountType, benefitAmount) {
@@ -231,6 +245,10 @@ class EventProcessor {
     };
   }
 
+  /**
+   * @param {number} dateOfMonth
+   * @returns {number}
+   */
   #calcuateDDayDiscountAmount(dateOfMonth) {
     const { eventPeriod, discountAmount } = CHRISTMAST_EVENT;
 
@@ -251,7 +269,7 @@ class EventProcessor {
    * @param {number} discountAmount
    * @returns
    */
-  #sumDiscountBenefitAmount(orderedMenus, menuType, discountAmount) {
+  #sumDiscountAmount(orderedMenus, menuType, discountAmount) {
     return orderedMenus.reduce(
       (prevSum, { type, count }) =>
         type === menuType ? prevSum + count * discountAmount : prevSum,
