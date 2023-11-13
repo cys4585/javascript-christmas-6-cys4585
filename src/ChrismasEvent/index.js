@@ -1,6 +1,7 @@
 import EventPlanner from "./EventPlanner/index.js";
 import InputView from "./View/InputView.js";
 import OutputView from "./View/OutputView.js";
+import retryOnErrorAsync from "./utils/retryOnErrorAsync.js";
 
 class ChristmasEvent {
   #eventPlanner;
@@ -26,8 +27,8 @@ class ChristmasEvent {
   }
 
   async #step1() {
-    const dateOfMonth = await InputView.readDate();
-    const menus = await InputView.readOrderMenu();
+    const dateOfMonth = await retryOnErrorAsync(InputView.readDate);
+    const menus = await retryOnErrorAsync(InputView.readOrderMenu);
     OutputView.printPreview(dateOfMonth);
 
     return { dateOfMonth, menus };

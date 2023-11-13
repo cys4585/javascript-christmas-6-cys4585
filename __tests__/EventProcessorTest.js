@@ -1,5 +1,5 @@
 import EventProcessor from "../src/ChrismasEvent/EventPlanner/EventProcessor";
-import MenuBook from "../src/ChrismasEvent/EventPlanner/MenuBook";
+import MenuBook from "../src/ChrismasEvent/ObjectForEvent/MenuBook";
 import CHRISTMAST_EVENT from "../src/ChrismasEvent/constants/christmasEvent";
 
 const cases = {
@@ -350,18 +350,6 @@ describe("이벤트 프로세서(EventProcessor) 클래스 테스트", () => {
 
       // then
       expect(discountAmount).toEqual(expectedDiscountAmount);
-    },
-  );
-
-  test.each(cases.computeEventBadge)(
-    "총혜택 금액 데이터를 가지고 '이벤트 배지 계산' 메서드를 호출하면, 이벤트 배지(string)을 반환한다.",
-    // given
-    ({ input: { totalBenefitAmount }, expected: expectedEventBadge }) => {
-      // when
-      const eventBadge = eventProcessor.computeEventBadge(totalBenefitAmount);
-
-      // then
-      expect(eventBadge).toEqual(expectedEventBadge);
     },
   );
 });

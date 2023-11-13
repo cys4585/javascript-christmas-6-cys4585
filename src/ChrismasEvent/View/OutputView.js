@@ -112,6 +112,13 @@ const OutputView = {
     Console.print("<12월 이벤트 배지>");
     Console.print(eventBadge);
   },
+
+  /**
+   * @param {Error} error
+   */
+  printError(error) {
+    Console.print(error.message);
+  },
 };
 
 export default OutputView;

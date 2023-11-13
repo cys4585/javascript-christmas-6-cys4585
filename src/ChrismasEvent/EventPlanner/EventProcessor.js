@@ -1,8 +1,8 @@
-import CHRISTMAST_EVENT from "../../constants/christmasEvent.js";
-import EVENT_DATE from "../../constants/eventDate.js";
-import MENU from "../../constants/menu.js";
-import MenuBook from "../MenuBook.js";
-import EventCalendar from "../EventCalendar.js";
+import CHRISTMAST_EVENT from "../constants/christmasEvent.js";
+import EVENT_DATE from "../constants/eventDate.js";
+import MENU from "../constants/menu.js";
+import EventCalendar from "../ObjectForEvent/EventCalendar.js";
+import MenuBook from "../ObjectForEvent/MenuBook.js";
 
 /**
  * @typedef {Object} FreeGiftBenefit

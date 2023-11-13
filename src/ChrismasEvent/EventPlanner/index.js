@@ -1,6 +1,6 @@
 import CHRISTMAST_EVENT from "../constants/christmasEvent.js";
-import EventProcessor from "./EventProcessor/index.js";
-import OrderProcessor from "./OrderProcess/index.js";
+import EventProcessor from "./EventProcessor.js";
+import OrderProcessor from "./OrderProcess.js";
 
 class EventPlanner {
   #orderProcessor;

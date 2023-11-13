@@ -16,7 +16,7 @@ const InputView = {
   },
 
   /**
-   * @returns {import("../EventPlanner/OrderProcess").Menu[]}
+   * @returns {import("../EventPlanner/OrderProcess.js").Menu[]}
    */
   async readOrderMenu() {
     const input = await Console.readLineAsync(
