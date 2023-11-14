@@ -1,5 +1,4 @@
 import CHRISTMAST_EVENT from "../common/constants/christmasEvent.js";
-import EVENT_DATE from "../common/constants/eventDate.js";
 import MENU from "../common/constants/menu.js";
 import EventCalendar from "../common/classes/EventCalendar.js";
 import MenuBook from "../common/classes/MenuBook.js";
@@ -9,7 +8,7 @@ class EventProcessor {
   #eventCalendar;
 
   constructor() {
-    this.#eventCalendar = new EventCalendar(EVENT_DATE.year, EVENT_DATE.month);
+    this.#eventCalendar = new EventCalendar();
   }
 
   /**
@@ -89,7 +88,6 @@ class EventProcessor {
     const { discountType } = CHRISTMAST_EVENT;
 
     const benefitAmount = this.#calcuateDDayDiscountAmount(dateOfMonth);
-
     const discountBenefit = this.#generateDiscountBenefit(
       discountType.dDay,
       benefitAmount,
@@ -106,7 +104,6 @@ class EventProcessor {
     const { discountAmount } = CHRISTMAST_EVENT;
 
     const isSpecialEventDay = this.#eventCalendar.isStarDay(dateOfMonth);
-
     const benefitAmount = isSpecialEventDay ? discountAmount.specialEvent : 0;
 
     return this.#generateSpecialDiscountBenefit(benefitAmount);
@@ -220,13 +217,13 @@ class EventProcessor {
     }
 
     return (
-      discountAmount.christmasDDayEvent +
-      (dateOfMonth - eventPeriod.christmasDDay.start) * 100
+      discountAmount.christmasDDayEvent.base +
+      (dateOfMonth - eventPeriod.christmasDDay.start) *
+        discountAmount.christmasDDayEvent.dailyIncrease
     );
   }
 
   /**
-   *
    * @param {OrderedMenu[]} orderedMenus
    * @param {string} menuType
    * @param {number} discountAmount

@@ -43,7 +43,7 @@ const cases = {
           eventType: CHRISTMAST_EVENT.eventType.discount,
           discountType: CHRISTMAST_EVENT.discountType.dDay,
           benefitAmount:
-            CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 200,
+            CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 200,
         },
         {
           eventType: CHRISTMAST_EVENT.eventType.discount,
@@ -133,7 +133,7 @@ const cases = {
           eventType: CHRISTMAST_EVENT.eventType.discount,
           discountType: CHRISTMAST_EVENT.discountType.dDay,
           benefitAmount:
-            CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 100,
+            CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 100,
         },
         {
           eventType: CHRISTMAST_EVENT.eventType.discount,
@@ -176,7 +176,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.discount,
             discountType: CHRISTMAST_EVENT.discountType.dDay,
             benefitAmount:
-              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 200,
+              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 200,
           },
           {
             eventType: CHRISTMAST_EVENT.eventType.discount,
@@ -212,7 +212,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.discount,
             discountType: CHRISTMAST_EVENT.discountType.dDay,
             benefitAmount:
-              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 100,
+              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 100,
           },
           {
             eventType: CHRISTMAST_EVENT.eventType.discount,
@@ -257,7 +257,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.discount,
             discountType: CHRISTMAST_EVENT.discountType.dDay,
             benefitAmount:
-              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 200,
+              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 200,
           },
           {
             eventType: CHRISTMAST_EVENT.eventType.discount,
@@ -293,7 +293,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.discount,
             discountType: CHRISTMAST_EVENT.discountType.dDay,
             benefitAmount:
-              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent + 100,
+              CHRISTMAST_EVENT.discountAmount.christmasDDayEvent.base + 100,
           },
           {
             eventType: CHRISTMAST_EVENT.eventType.discount,

@@ -1,31 +1,11 @@
 import MENU from "../constants/menu.js";
+import MENU_BOOK_INFORMATION from "../constants/menuBook.js";
 
 class MenuBook {
-  #menuInformation = Object.freeze({
-    [MENU.type.appetizer]: Object.freeze({
-      [MENU.name.mushroomSoup]: 6_000,
-      [MENU.name.tapas]: 5_500,
-      [MENU.name.caesarSalad]: 8_000,
-    }),
-    [MENU.type.main]: Object.freeze({
-      [MENU.name.tBoneSteak]: 55_000,
-      [MENU.name.barbecueRib]: 54_000,
-      [MENU.name.seafoodPasta]: 35_000,
-      [MENU.name.christmasPasta]: 25_000,
-    }),
-    [MENU.type.dessert]: Object.freeze({
-      [MENU.name.chocolateCake]: 15_000,
-      [MENU.name.iceCream]: 5_000,
-    }),
-    [MENU.type.beverage]: Object.freeze({
-      [MENU.name.zeroCoke]: 3_000,
-      [MENU.name.redWine]: 60_000,
-      [MENU.name.champagne]: 25_000,
-    }),
-  });
+  #menuBookInformation = MENU_BOOK_INFORMATION;
 
   #getAllMenuTypes() {
-    return Object.keys(this.#menuInformation);
+    return Object.keys(this.#menuBookInformation);
   }
 
   #getAllMenuNames() {
@@ -34,7 +14,7 @@ class MenuBook {
     const menuNames = menuTypes.reduce(
       (prevMenuNames, menuType) => [
         ...prevMenuNames,
-        ...Object.keys(this.#menuInformation[menuType]),
+        ...Object.keys(this.#menuBookInformation[menuType]),
       ],
       [],
     );
@@ -43,7 +23,7 @@ class MenuBook {
   }
 
   #getBeverageMenuNames() {
-    return Object.keys(this.#menuInformation[MENU.type.beverage]);
+    return Object.keys(this.#menuBookInformation[MENU.type.beverage]);
   }
 
   /**
@@ -53,7 +33,7 @@ class MenuBook {
   findMenuType(menuName) {
     const menuTypes = this.#getAllMenuTypes();
     return menuTypes.find((menuType) =>
-      Object.keys(this.#menuInformation[menuType]).includes(menuName),
+      Object.keys(this.#menuBookInformation[menuType]).includes(menuName),
     );
   }
 
@@ -63,7 +43,7 @@ class MenuBook {
    */
   findMenuPrice(menuName) {
     const menuType = this.findMenuType(menuName);
-    return this.#menuInformation[menuType][menuName];
+    return this.#menuBookInformation[menuType][menuName];
   }
 
   /**

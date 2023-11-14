@@ -1,8 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
-import {
-  validateDate,
-  validateOrderMenu,
-} from "../common/validators/InputView.js";
+import InputViewValidator from "../common/validators/InputView/index.js";
+import INPUT from "../common/constants/input.js";
 import "../common/typedefs/index.js";
 
 const InputView = {
@@ -10,11 +8,9 @@ const InputView = {
    * @returns {number}
    */
   async readDate() {
-    const input = await Console.readLineAsync(
-      "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)\n",
-    );
+    const input = await Console.readLineAsync(INPUT.message.readDate);
 
-    validateDate(input);
+    InputViewValidator.validateDate(input);
 
     return parseInt(input, 10);
   },
@@ -23,14 +19,14 @@ const InputView = {
    * @returns {Menu[]}
    */
   async readOrderMenu() {
-    const input = await Console.readLineAsync(
-      "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n",
-    );
+    const input = await Console.readLineAsync(INPUT.message.readOrderMenu);
 
-    validateOrderMenu(input);
+    InputViewValidator.validateOrderMenu(input);
 
-    return input.split(",").map((menuNameAndCount) => {
-      const [menuName, count] = menuNameAndCount.split("-");
+    return input.split(INPUT.separator.menu).map((menuNameAndCount) => {
+      const [menuName, count] = menuNameAndCount.split(
+        INPUT.separator.menuAndCount,
+      );
       return { menuName, count: parseInt(count, 10) };
     });
   },

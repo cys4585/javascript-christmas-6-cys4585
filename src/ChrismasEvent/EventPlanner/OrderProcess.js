@@ -1,4 +1,5 @@
 import MenuBook from "../common/classes/MenuBook.js";
+import INPUT from "../common/constants/input.js";
 import "../common/typedefs/index.js";
 
 class OrderProcessor {
@@ -59,7 +60,7 @@ class OrderProcessor {
     );
 
     if (isExistNonOrderableMenu) {
-      throw new Error("[ERROR] 메뉴북에 없는 메뉴를 주문했네요!?");
+      throw new Error(INPUT.errorMessage.readOrderMenu);
     }
   }
 
@@ -69,7 +70,7 @@ class OrderProcessor {
     );
 
     if (isExistOnlyBeverageMenu) {
-      throw new Error("[ERROR] 음료만 주문했네요!?");
+      throw new Error(INPUT.errorMessage.readOrderMenu);
     }
   }
 
@@ -80,7 +81,7 @@ class OrderProcessor {
     );
 
     if (menuCount > 20) {
-      throw new Error("[ERROR] 메뉴를 20개 넘게 주문했네요!?");
+      throw new Error(INPUT.errorMessage.readOrderMenu);
     }
   }
 }

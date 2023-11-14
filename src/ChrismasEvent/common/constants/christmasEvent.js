@@ -1,11 +1,11 @@
-import EVENT_DATE from "./eventDate.js";
 import MENU from "./menu.js";
+import EVENT_DATE from "./eventDate.js";
 
 const minimumTotalPriceConditionForEvent = 10_000;
 
 const eventType = Object.freeze({
-  freeGift: "증정이벤트",
-  discount: "할인이벤트",
+  freeGift: "증정 이벤트",
+  discount: "할인 이벤트",
 });
 
 const discountType = Object.freeze({
@@ -21,7 +21,15 @@ const freeGift = Object.freeze({
   count: 1,
 });
 
-const starEventDays = Object.freeze([3, 10, 17, 24, 25, 31]);
+const discountAmount = Object.freeze({
+  christmasDDayEvent: {
+    base: 1000,
+    dailyIncrease: 100,
+  },
+  specialEvent: 1000,
+  weekdayEvent: 2023,
+  weekendEvent: 2023,
+});
 
 const eventPeriod = Object.freeze({
   default: {
@@ -33,15 +41,6 @@ const eventPeriod = Object.freeze({
     end: 25,
   },
 });
-
-const discountAmount = Object.freeze({
-  christmasDDayEvent: 1000,
-  specialEvent: 1000,
-  weekdayEvent: 2023,
-  weekendEvent: 2023,
-});
-
-const weekends = Object.freeze(["금", "토"]);
 
 const eventBadge = Object.freeze({
   default: "없음",
@@ -64,10 +63,8 @@ const CHRISTMAST_EVENT = Object.freeze({
   eventType,
   discountType,
   freeGift,
-  starEventDays,
   eventPeriod,
   discountAmount,
-  weekends,
   eventBadge,
 });
 
