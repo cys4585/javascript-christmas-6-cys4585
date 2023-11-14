@@ -64,6 +64,50 @@ const cases = {
     },
     {
       input: {
+        dateOfMonth: 26,
+        orderState: {
+          orderedMenus: [
+            { menuName: "티본스테이크", count: 1, type: "메인", price: 55_000 },
+            { menuName: "바비큐립", count: 1, type: "메인", price: 54_000 },
+            { menuName: "초코케이크", count: 2, type: "디저트", price: 15_000 },
+            { menuName: "제로콜라", count: 1, type: "음료", price: 3_000 },
+          ],
+          totalPrice: 142_000,
+        },
+      },
+      expeced: [
+        {
+          eventType: CHRISTMAST_EVENT.eventType.freeGift,
+          menuName: CHRISTMAST_EVENT.freeGift.menuName,
+          count: CHRISTMAST_EVENT.freeGift.count,
+          benefitAmount: new MenuBook().findMenuPrice(
+            CHRISTMAST_EVENT.freeGift.menuName,
+          ),
+        },
+        {
+          eventType: CHRISTMAST_EVENT.eventType.discount,
+          discountType: CHRISTMAST_EVENT.discountType.dDay,
+          benefitAmount: 0,
+        },
+        {
+          eventType: CHRISTMAST_EVENT.eventType.discount,
+          discountType: CHRISTMAST_EVENT.discountType.special,
+          benefitAmount: 0,
+        },
+        {
+          eventType: CHRISTMAST_EVENT.eventType.discount,
+          discountType: CHRISTMAST_EVENT.discountType.weekend,
+          benefitAmount: 0,
+        },
+        {
+          eventType: CHRISTMAST_EVENT.eventType.discount,
+          discountType: CHRISTMAST_EVENT.discountType.weekday,
+          benefitAmount: CHRISTMAST_EVENT.discountAmount.weekdayEvent * 2,
+        },
+      ],
+    },
+    {
+      input: {
         dateOfMonth: 2,
         orderState: {
           orderedMenus: [
