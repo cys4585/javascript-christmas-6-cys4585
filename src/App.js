@@ -2,7 +2,7 @@ import ChristmasEvent from "./ChrismasEvent/index.js";
 
 class App {
   async run() {
-    new ChristmasEvent().run();
+    await new ChristmasEvent().run();
   }
 }
 
