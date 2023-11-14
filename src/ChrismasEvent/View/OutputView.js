@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
-import EVENT_DATE from "../constants/eventDate.js";
-import CHRISTMAST_EVENT from "../constants/christmasEvent.js";
+import EVENT_DATE from "../common/constants/eventDate.js";
+import CHRISTMAST_EVENT from "../common/constants/christmasEvent.js";
+import "../common/typedefs/index.js";
 
 const OutputView = {
   printWelcomeGreeting() {
@@ -27,7 +28,7 @@ const OutputView = {
   },
 
   /**
-   * @param {import("../EventPlanner/OrderProcess").OrderedMenu[]} orderedMenus
+   * @param {OrderedMenu[]} orderedMenus
    */
   printMenu(orderedMenus) {
     Console.print("<주문 메뉴>");
@@ -48,7 +49,7 @@ const OutputView = {
   },
 
   /**
-   * @param {import("../EventPlanner/EventProcessor/index.js").EventBenefitArray} eventBenefits
+   * @param {EventBenefitArray} eventBenefits
    */
   printFreeGift(eventBenefits) {
     Console.print("<증정 메뉴>");
@@ -66,7 +67,7 @@ const OutputView = {
   },
 
   /**
-   * @param {import("../EventPlanner/EventProcessor/index.js").EventBenefitArray} eventBenefits
+   * @param {EventBenefitArray} eventBenefits
    */
   printBenefits(eventBenefits) {
     Console.print("<혜택 내역>");

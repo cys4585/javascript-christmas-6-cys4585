@@ -1,4 +1,4 @@
-import MenuBook from "../ObjectForEvent/MenuBook.js";
+import MenuBook from "../classes/MenuBook.js";
 
 /**
  * @param {string} word

@@ -1,5 +1,5 @@
 import EventPlanner from "../src/ChrismasEvent/EventPlanner";
-import CHRISTMAST_EVENT from "../src/ChrismasEvent/constants/christmasEvent";
+import CHRISTMAST_EVENT from "../src/ChrismasEvent/common/constants/christmasEvent";
 
 describe("이벤트 플래너(EventPlanner) 클래스 테스트", () => {
   /**
@@ -11,8 +11,6 @@ describe("이벤트 플래너(EventPlanner) 클래스 테스트", () => {
     eventPlanner = new EventPlanner();
   });
 
-  /**
-   * TODO: computeFinalPaymentAmount의 인자가 변경됨!!!
   test("할인 전 총주문 금액과 총할인 금액을 가지고 '최종 예상 결제 금액 계산' 메서드를 호출하면, 최종 결제 예상 결제 금액(number)를 반환한다.", () => {
     // given
     const totalPrice = 130000;
@@ -28,7 +26,6 @@ describe("이벤트 플래너(EventPlanner) 클래스 테스트", () => {
     // then
     expect(finalPaymentAmount).toEqual(expectedFinalPaymentAmount);
   });
-   */
 
   const cases = [
     {

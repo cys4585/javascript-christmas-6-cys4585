@@ -1,5 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
-import { validateDate, validateOrderMenu } from "../validators/InputView.js";
+import {
+  validateDate,
+  validateOrderMenu,
+} from "../common/validators/InputView.js";
+import "../common/typedefs/index.js";
 
 const InputView = {
   /**
@@ -16,7 +20,7 @@ const InputView = {
   },
 
   /**
-   * @returns {import("../EventPlanner/OrderProcess.js").Menu[]}
+   * @returns {Menu[]}
    */
   async readOrderMenu() {
     const input = await Console.readLineAsync(

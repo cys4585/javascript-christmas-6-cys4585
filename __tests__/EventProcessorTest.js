@@ -1,6 +1,6 @@
 import EventProcessor from "../src/ChrismasEvent/EventPlanner/EventProcessor";
-import MenuBook from "../src/ChrismasEvent/ObjectForEvent/MenuBook";
-import CHRISTMAST_EVENT from "../src/ChrismasEvent/constants/christmasEvent";
+import MenuBook from "../src/ChrismasEvent/common/classes/MenuBook";
+import CHRISTMAST_EVENT from "../src/ChrismasEvent/common/constants/christmasEvent";
 
 const cases = {
   computeEventBenefits: [
@@ -269,33 +269,6 @@ const cases = {
         ],
       },
       expected: 5_146,
-    },
-  ],
-
-  computeEventBadge: [
-    {
-      input: {
-        totalBenefitAmount: 0,
-      },
-      expected: CHRISTMAST_EVENT.eventBadge.default,
-    },
-    {
-      input: {
-        totalBenefitAmount: 9_246,
-      },
-      expected: CHRISTMAST_EVENT.eventBadge.star.name,
-    },
-    {
-      input: {
-        totalBenefitAmount: 19_246,
-      },
-      expected: CHRISTMAST_EVENT.eventBadge.tree.name,
-    },
-    {
-      input: {
-        totalBenefitAmount: 30_146,
-      },
-      expected: CHRISTMAST_EVENT.eventBadge.santa.name,
     },
   ],
 };

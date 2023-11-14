@@ -1,24 +1,5 @@
-import MenuBook from "../ObjectForEvent/MenuBook.js";
-
-/**
- * @typedef {Object} Menu
- * @property {string} menuName
- * @property {number} count
- */
-
-/**
- * @typedef {Object} OrderedMenu
- * @property {string} menuName
- * @property {number} count
- * @property {string} type
- * @property {number} price
- */
-
-/**
- * @typedef {Object} OrderState
- * @property {OrderedMenu} orderedMenu
- * @property {number} totalPrice
- */
+import MenuBook from "../common/classes/MenuBook.js";
+import "../common/typedefs/index.js";
 
 class OrderProcessor {
   #menuBook;
@@ -32,8 +13,8 @@ class OrderProcessor {
    * @returns {OrderState}
    */
   takeOrder(menus) {
-    this.#validateOrderedMenus(menus);
-    const orderedMenus = this.#computeOrderedMenusInformation(menus);
+    this.#validateMenus(menus);
+    const orderedMenus = this.#computeOrderedMenu(menus);
     const totalPrice = this.#computeTotalPrice(orderedMenus);
 
     return { orderedMenus, totalPrice };
@@ -43,7 +24,7 @@ class OrderProcessor {
    * @param {Menu[]} menus
    * @returns {OrderedMenu[]}
    */
-  #computeOrderedMenusInformation(menus) {
+  #computeOrderedMenu(menus) {
     return menus.map(({ menuName, count }) => ({
       menuName,
       count,
@@ -66,7 +47,7 @@ class OrderProcessor {
   /**
    * @param {Menu[]} menus
    */
-  #validateOrderedMenus(menus) {
+  #validateMenus(menus) {
     this.#validateNonOrderableMenu(menus);
     this.#validateOnlyBeverageMenu(menus);
     this.#validateMaximumMenuCount(menus);

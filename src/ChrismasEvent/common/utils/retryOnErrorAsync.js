@@ -1,4 +1,4 @@
-import OutputView from "../View/OutputView.js";
+import OutputView from "../../View/OutputView.js";
 
 const retryOnErrorAsync = async (asyncCallback) => {
   try {

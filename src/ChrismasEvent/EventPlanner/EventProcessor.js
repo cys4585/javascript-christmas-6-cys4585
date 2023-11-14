@@ -1,33 +1,9 @@
-import CHRISTMAST_EVENT from "../constants/christmasEvent.js";
-import EVENT_DATE from "../constants/eventDate.js";
-import MENU from "../constants/menu.js";
-import EventCalendar from "../ObjectForEvent/EventCalendar.js";
-import MenuBook from "../ObjectForEvent/MenuBook.js";
-
-/**
- * @typedef {Object} FreeGiftBenefit
- * @property {string} eventType
- * @property {string} menuName
- * @property {number} count
- * @property {number} benefitAmount
- */
-
-/**
- * @typedef {Object} DiscountBenefit
- * @property {string} eventType
- * @property {string} discountType
- * @property {number} benefitAmount
- */
-
-/**
- * @typedef {Array<FreeGiftBenefit | DiscountBenefit>} EventBenefitArray
- */
-
-/**
- * @typedef {Object} EventState
- * @property {EventBenefitArray} eventBenefits
- * @property {number} totalBenefitAmount
- */
+import CHRISTMAST_EVENT from "../common/constants/christmasEvent.js";
+import EVENT_DATE from "../common/constants/eventDate.js";
+import MENU from "../common/constants/menu.js";
+import EventCalendar from "../common/classes/EventCalendar.js";
+import MenuBook from "../common/classes/MenuBook.js";
+import "../common/typedefs/index.js";
 
 class EventProcessor {
   #eventCalendar;
@@ -38,7 +14,7 @@ class EventProcessor {
 
   /**
    * @param {number} dateOfMonth
-   * @param {import("../OrderProcess/index.js").OrderState} orderState
+   * @param {OrderState} orderState
    * @returns {EventBenefitArray}
    */
   computeEventBenefits(dateOfMonth, { orderedMenus, totalPrice }) {
@@ -138,7 +114,7 @@ class EventProcessor {
 
   /**
    * @param {number} dateOfMonth
-   * @param {import("../OrderProcess/index.js").OrderedMenu[]} orderedMenus
+   * @param {OrderedMenu[]} orderedMenus
    * @returns {DiscountBenefit}
    */
   #computeWeekendDiscountBenefit(dateOfMonth, orderedMenus) {
@@ -157,7 +133,7 @@ class EventProcessor {
 
   /**
    * @param {number} dateOfMonth
-   * @param {import("../OrderProcess/index.js").OrderedMenu[]} orderedMenus
+   * @param {OrderedMenu[]} orderedMenus
    * @returns {DiscountBenefit}
    */
   #computeWeekdayDiscountBenefit(dateOfMonth, orderedMenus) {
@@ -251,7 +227,7 @@ class EventProcessor {
 
   /**
    *
-   * @param {import("../OrderProcess/index.js").OrderedMenu[]} orderedMenus
+   * @param {OrderedMenu[]} orderedMenus
    * @param {string} menuType
    * @param {number} discountAmount
    * @returns

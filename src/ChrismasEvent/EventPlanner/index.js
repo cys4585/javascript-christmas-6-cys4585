@@ -1,6 +1,7 @@
-import CHRISTMAST_EVENT from "../constants/christmasEvent.js";
-import EventProcessor from "./EventProcessor.js";
+import CHRISTMAST_EVENT from "../common/constants/christmasEvent.js";
 import OrderProcessor from "./OrderProcess.js";
+import EventProcessor from "./EventProcessor.js";
+import "../common/typedefs/index.js";
 
 class EventPlanner {
   #orderProcessor;
@@ -13,8 +14,8 @@ class EventPlanner {
   }
 
   /**
-   * @param {import("./OrderProcess/index.js").Menu[]} menus
-   * @returns {import("./OrderProcess/index.js").OrderState}
+   * @param {Menu[]} menus
+   * @returns {OrderState}
    */
   computeOrderState(menus) {
     return this.#orderProcessor.takeOrder(menus);
@@ -22,8 +23,8 @@ class EventPlanner {
 
   /**
    * @param {number} dateOfMonth
-   * @param {import("./OrderProcess/index.js").OrderState} orderState
-   * @returns {import("./EventProcessor/index.js").EventState}
+   * @param {OrderState} orderState
+   * @returns {EventState}
    */
   computeEventState(dateOfMonth, orderState) {
     const eventBenefits = this.#eventProcessor.computeEventBenefits(
@@ -32,21 +33,19 @@ class EventPlanner {
     );
     const totalBenefitAmount =
       this.#eventProcessor.computeTotalBenefitAmount(eventBenefits);
+    const discountAmount =
+      this.#eventProcessor.computeDiscountAmount(eventBenefits);
 
-    return { eventBenefits, totalBenefitAmount };
+    return { eventBenefits, totalBenefitAmount, discountAmount };
   }
 
   /**
-   * @param {import("./OrderProcess/index.js").OrderState} orderState
-   * @param {import("./EventProcessor/index.js").EventState} eventState
-   * @returns
+   * @param {number} totalPrice
+   * @param {number} discountAmount
+   * @returns {number}
    */
-  computeFinalPaymentAmount(orderState, eventState) {
-    const discountAmount = this.#eventProcessor.computeDiscountAmount(
-      eventState.eventBenefits,
-    );
-
-    return orderState.totalPrice - discountAmount;
+  computeFinalPaymentAmount(totalPrice, discountAmount) {
+    return totalPrice - discountAmount;
   }
 
   /**
