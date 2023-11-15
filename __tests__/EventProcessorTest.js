@@ -1,5 +1,5 @@
 import EventProcessor from "../src/ChrismasEvent/EventPlanner/EventProcessor";
-import MenuBook from "../src/ChrismasEvent/common/classes/MenuBook";
+import menuBook from "../src/ChrismasEvent/common/instances/menuBook";
 import CHRISTMAST_EVENT from "../src/ChrismasEvent/common/constants/christmasEvent";
 
 const cases = {
@@ -35,7 +35,7 @@ const cases = {
           eventType: CHRISTMAST_EVENT.eventType.freeGift,
           menuName: CHRISTMAST_EVENT.freeGift.menuName,
           count: CHRISTMAST_EVENT.freeGift.count,
-          benefitAmount: new MenuBook().findMenuPrice(
+          benefitAmount: menuBook.findMenuPrice(
             CHRISTMAST_EVENT.freeGift.menuName,
           ),
         },
@@ -80,7 +80,7 @@ const cases = {
           eventType: CHRISTMAST_EVENT.eventType.freeGift,
           menuName: CHRISTMAST_EVENT.freeGift.menuName,
           count: CHRISTMAST_EVENT.freeGift.count,
-          benefitAmount: new MenuBook().findMenuPrice(
+          benefitAmount: menuBook.findMenuPrice(
             CHRISTMAST_EVENT.freeGift.menuName,
           ),
         },
@@ -125,7 +125,7 @@ const cases = {
           eventType: CHRISTMAST_EVENT.eventType.freeGift,
           menuName: CHRISTMAST_EVENT.freeGift.menuName,
           count: CHRISTMAST_EVENT.freeGift.count,
-          benefitAmount: new MenuBook().findMenuPrice(
+          benefitAmount: menuBook.findMenuPrice(
             CHRISTMAST_EVENT.freeGift.menuName,
           ),
         },
@@ -168,7 +168,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.freeGift,
             menuName: CHRISTMAST_EVENT.freeGift.menuName,
             count: CHRISTMAST_EVENT.freeGift.count,
-            benefitAmount: new MenuBook().findMenuPrice(
+            benefitAmount: menuBook.findMenuPrice(
               CHRISTMAST_EVENT.freeGift.menuName,
             ),
           },
@@ -204,7 +204,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.freeGift,
             menuName: CHRISTMAST_EVENT.freeGift.menuName,
             count: CHRISTMAST_EVENT.freeGift.count,
-            benefitAmount: new MenuBook().findMenuPrice(
+            benefitAmount: menuBook.findMenuPrice(
               CHRISTMAST_EVENT.freeGift.menuName,
             ),
           },
@@ -249,7 +249,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.freeGift,
             menuName: CHRISTMAST_EVENT.freeGift.menuName,
             count: CHRISTMAST_EVENT.freeGift.count,
-            benefitAmount: new MenuBook().findMenuPrice(
+            benefitAmount: menuBook.findMenuPrice(
               CHRISTMAST_EVENT.freeGift.menuName,
             ),
           },
@@ -285,7 +285,7 @@ const cases = {
             eventType: CHRISTMAST_EVENT.eventType.freeGift,
             menuName: CHRISTMAST_EVENT.freeGift.menuName,
             count: CHRISTMAST_EVENT.freeGift.count,
-            benefitAmount: new MenuBook().findMenuPrice(
+            benefitAmount: menuBook.findMenuPrice(
               CHRISTMAST_EVENT.freeGift.menuName,
             ),
           },

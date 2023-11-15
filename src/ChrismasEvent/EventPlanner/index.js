@@ -1,6 +1,6 @@
 import CHRISTMAST_EVENT from "../common/constants/christmasEvent.js";
 import OrderProcessor from "./OrderProcess.js";
-import EventProcessor from "./EventProcessor.js";
+import EventProcessor from "./EventProcessor/index.js";
 import "../common/typedefs/index.js";
 
 class EventPlanner {

@@ -4,10 +4,31 @@
 
 /**
  * @typedef {Object} ExpectedResult
- * @property {OrderState} orderState
- * @property {EventState} eventState
- * @property {number} finalPaymentAmount
- * @property {string} eventBadge
+ * @property {OrderState} orderState 주문 관련 데이터
+ * @property {EventState} eventState 이벤트 관련 데이터
+ * @property {number} finalPaymentAmount 최종 결제 금액
+ * @property {string} eventBadge 이벤트 배지
+ */
+
+/**
+ * ---------------------------------------------------------------------------
+ */
+
+/**
+ * EventPlanner
+ */
+
+/**
+ * @typedef {Object} OrderState 주문 관련 데이터
+ * @property {OrderedMenu} orderedMenu 주문 내역
+ * @property {number} totalPrice 총주문 금액
+ */
+
+/**
+ * @typedef {Object} EventState 이벤트 관련 데이터
+ * @property {EventBenefitArray} eventBenefits 이벤트 혜택 내역
+ * @property {number} totalBenefitAmount 총혜택 금액
+ * @property {number} discountAmount 할인 금액
  */
 
 /**
@@ -19,13 +40,7 @@
  */
 
 /**
- * @typedef {Object} OrderState
- * @property {OrderedMenu} orderedMenu
- * @property {number} totalPrice
- */
-
-/**
- * @typedef {Object} OrderedMenu
+ * @typedef {Object} OrderedMenu 주문 내역
  * @property {string} menuName
  * @property {number} count
  * @property {string} type
@@ -33,7 +48,7 @@
  */
 
 /**
- * @typedef {Object} Menu
+ * @typedef {Object} Menu 주문 정보 (사용자가 주문한 메뉴 및 개수)
  * @property {string} menuName
  * @property {number} count
  */
@@ -47,18 +62,11 @@
  */
 
 /**
- * @typedef {Object} EventState
- * @property {EventBenefitArray} eventBenefits
- * @property {number} totalBenefitAmount
- * @property {number} discountAmount
+ * @typedef {Array<FreeGiftBenefit | DiscountBenefit>} EventBenefitArray 모든 이벤트 혜택 내역
  */
 
 /**
- * @typedef {Array<FreeGiftBenefit | DiscountBenefit>} EventBenefitArray
- */
-
-/**
- * @typedef {Object} FreeGiftBenefit
+ * @typedef {Object} FreeGiftBenefit 증정 이벤트 혜택
  * @property {string} eventType
  * @property {string} menuName
  * @property {number} count
@@ -66,7 +74,7 @@
  */
 
 /**
- * @typedef {Object} DiscountBenefit
+ * @typedef {Object} DiscountBenefit 할인 이벤트 혜택
  * @property {string} eventType
  * @property {string} discountType
  * @property {number} benefitAmount

@@ -28,4 +28,5 @@ class EventCalendar {
   }
 }
 
-export default EventCalendar;
+const eventCalendar = new EventCalendar();
+export default eventCalendar;

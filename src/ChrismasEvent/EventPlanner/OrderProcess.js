@@ -1,14 +1,8 @@
-import MenuBook from "../common/classes/MenuBook.js";
+import menuBook from "../common/instances/menuBook.js";
 import INPUT from "../common/constants/input.js";
 import "../common/typedefs/index.js";
 
 class OrderProcessor {
-  #menuBook;
-
-  constructor() {
-    this.#menuBook = new MenuBook();
-  }
-
   /**
    * @param {Menu[]} menus
    * @returns {OrderState}
@@ -29,8 +23,8 @@ class OrderProcessor {
     return menus.map(({ menuName, count }) => ({
       menuName,
       count,
-      type: this.#menuBook.findMenuType(menuName),
-      price: this.#menuBook.findMenuPrice(menuName),
+      type: menuBook.findMenuType(menuName),
+      price: menuBook.findMenuPrice(menuName),
     }));
   }
 
@@ -56,7 +50,7 @@ class OrderProcessor {
 
   #validateNonOrderableMenu(menus) {
     const isExistNonOrderableMenu = !menus.every(({ menuName }) =>
-      this.#menuBook.isOrderableMenu(menuName),
+      menuBook.isOrderableMenu(menuName),
     );
 
     if (isExistNonOrderableMenu) {
@@ -66,7 +60,7 @@ class OrderProcessor {
 
   #validateOnlyBeverageMenu(menus) {
     const isExistOnlyBeverageMenu = menus.every(({ menuName }) =>
-      this.#menuBook.isBeverageMenu(menuName),
+      menuBook.isBeverageMenu(menuName),
     );
 
     if (isExistOnlyBeverageMenu) {

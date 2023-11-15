@@ -1,4 +1,4 @@
-import MenuBook from "../../classes/MenuBook.js";
+import menuBook from "../../instances/menuBook.js";
 import EVENT_DATE from "../../constants/eventDate.js";
 import INPUT from "../../constants/input.js";
 
@@ -74,27 +74,21 @@ export const isDuplicateMenuName = (orderMenuList) => {
  * @param {string[]} orderMenuList
  * @returns {boolean}
  */
-export const isExistNonOrderableMenu = (orderMenuList) => {
-  const menuBook = new MenuBook();
-
-  return !orderMenuList.every((menuNameAndCount) => {
+export const isExistNonOrderableMenu = (orderMenuList) =>
+  !orderMenuList.every((menuNameAndCount) => {
     const [menuName] = menuNameAndCount.split(INPUT.separator.menuAndCount);
     return menuBook.isOrderableMenu(menuName);
   });
-};
 
 /**
  * @param {string[]} orderMenuList
  * @returns {boolean}
  */
-export const isExistOnlyBeverageMenu = (orderMenuList) => {
-  const menuBook = new MenuBook();
-
-  return orderMenuList.every((menuNameAndCount) => {
+export const isExistOnlyBeverageMenu = (orderMenuList) =>
+  orderMenuList.every((menuNameAndCount) => {
     const [menuName] = menuNameAndCount.split(INPUT.separator.menuAndCount);
     return menuBook.isBeverageMenu(menuName);
   });
-};
 
 /**
  * @param {string[]} orderMenuList

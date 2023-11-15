@@ -65,4 +65,5 @@ class MenuBook {
   }
 }
 
-export default MenuBook;
+const menuBook = new MenuBook();
+export default menuBook;
