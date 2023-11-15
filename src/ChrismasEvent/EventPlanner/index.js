@@ -55,13 +55,13 @@ class EventPlanner {
   computeEventBadge(totalBenefitAmount) {
     const { eventBadge } = CHRISTMAST_EVENT;
 
-    if (totalBenefitAmount > eventBadge.santa.minimumCondition) {
+    if (totalBenefitAmount >= eventBadge.santa.minimumCondition) {
       return eventBadge.santa.name;
     }
-    if (totalBenefitAmount > eventBadge.tree.minimumCondition) {
+    if (totalBenefitAmount >= eventBadge.tree.minimumCondition) {
       return eventBadge.tree.name;
     }
-    if (totalBenefitAmount > eventBadge.star.minimumCondition) {
+    if (totalBenefitAmount >= eventBadge.star.minimumCondition) {
       return eventBadge.star.name;
     }
     return eventBadge.default;
