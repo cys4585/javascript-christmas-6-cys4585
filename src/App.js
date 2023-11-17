@@ -1,5 +1,9 @@
+import ChristmasEvent from "./ChrismasEvent/index.js";
+
 class App {
-  async run() {}
+  async run() {
+    await new ChristmasEvent().run();
+  }
 }
 
 export default App;
